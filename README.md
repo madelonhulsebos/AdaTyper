@@ -1,6 +1,6 @@
 # AdaTyper
 
-**All commands below should be run from the root of the project.**
+**This code base is not up to date with the AdaTyper paper, so it might not fully function https://arxiv.org/pdf/2311.13806. The `base_estimator` module presents the individual classifiers of the prediction `pipeline`. Commands are intended to run from the root of the project.**
 
 ----
 
@@ -49,9 +49,8 @@ This estimator is matches column values to regular expressions, as preset in a '
 This estimator is reflects a dictionary that is populated with the most frequent values occurring in columns of each type as found in tables in GitTables. At inference, it returns the fraction of column values that intersects with the dictionary values of each type.
 
 #### TypeTaBERT (ML Model)
-Two ML models are implemented for TypeTaBERT. Both models take as input column-wise table embeddings (i.e. full tables are embedded with TaBERT, and split into column embeddings) and learn from this. First, we implemented the `MachineLearningExperimentsEstimator` to enable efficient development iterations. This estimator basically trains a Random Forest classifier on the column embeddings. Second, we have the `MachineLearningEstimator` which is the TypeTaBERT model that fine-tunes TaBERT for column type prediction. However, we do not train the parameters of TaBERT for type prediction, given that we need generalizable representations (and not tuned towards the types in scope, i.e. see `types.json`). The below figure shows the simple NN architecture of this TypeTaBERT model.
 
-![TypeTaBERT](figures/typetabert.png)
+**The ML model has been changed from TypeTaBERT, a fine-tuned version of TaBERT, to TypeT5 but this update has gone missing. The results that have been published are based on a RF classifier trained on vanilla T5 embeddings for semantic column type prediction. The training source corpus was GitTables.**
 
 
 
@@ -101,7 +100,7 @@ The app consists of a few components:
 - `typetabert/`: directory with code used for training the NN-based TypeTaBERT model. See `typetabert/README.md` for more details.
 - `table_bert/`: directory with depdency code from TaBERT. Visit the original TaBERT GitHub repository for more details: https://github.com/facebookresearch/TaBERT.
 
-Motivation and design principles can be found in the paper [here](https://drive.google.com/file/d/1qKjV3SyR1e2JNLYU5PaeNYRHsJI9TFto/view?usp=sharing).
+Motivation and design principles can be found in the paper [here](https://arxiv.org/pdf/2311.13806).
 
 ----
 
@@ -133,6 +132,8 @@ If one wants to use the already trained estimators instead of retraining from sc
 ----
 
 ## Deployment
+
+**This code is not published as it is not up to date with the published TypeT5 model.**
 
 If there is a trained pipeline available, one can use the app to go through the full process for generating type predictions for a given table, and potentially adapting the model towards new types.
 
@@ -214,15 +215,3 @@ The results of the evaluation can be found in the `evaluation/results/` director
 ### Release the new model
 
 To serve predictions with the newly trained model, change the settings in the `adatyper/settings.py` module (e.g. with the new pipeline identifier).
-
-----
-
-## Next steps
-
-Some next steps for the implementation are included as TODO notes in the code.
-
-Other steps envisioned for future iterations are listed below.
-
-- Preserve the state, so that the model is kept in memory.
-- Implement 'model branching', i.e. keeping local models based on end-user/customer sessions and a global model. The paper explains more on this.
-- Improve efficiency of KB-lookups, is inefficient due to dependence on DBpedia's web API. Currently, this estimator is disabled for efficiency.
