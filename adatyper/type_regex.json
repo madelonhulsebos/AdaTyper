@@ -1,0 +1,106 @@
+{
+    "country code": {
+        "regular_expressions": [
+            "^[A-Z]{2,}$",
+            "^[A-Z]{3,}$"
+        ],
+        "sources": ["https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns", "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"]
+    },
+    "phone number": {
+        "regular_expressions": [
+            "^(?:(?:\\+?1\\s*(?:[\\.-]\\s*)?)?(?:\\(\\s*(?:[2-9]1[02-9]|[2-9][02-8][0-9])\\s*\\)|(?:[2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\\s*(?:[.-]\\s*)?)(?:[2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\\s*(?:[.-]\\s*)?(?:[0-9]{4})(?:\\s*(?:#|x\\.?|ext\\.?|extension)\\s*(?:\\d+))?$",
+            "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$"
+        ],
+        "sources" : ["https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns", "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"]
+    },
+    "isbn": {
+        "regular_expressions": [
+            "^ISBN\\s(?=[-0-9xX ]{13}$)(?:[0-9]+[- ]){3}[0-9]*[xX0-9]$",
+            "^(97(8|9))?\\d{9}(\\d|X)$"
+        ],
+        "sources": ["regexlib.com", "regexlib.com"]
+    },
+    "date": {
+        "regular_expressions": [
+            "^\\d{4}-[01]\\d-[0-3]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d(?:\\.\\d+)?Z?$",
+            "^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\\d\\d$",
+            "^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\\d\\d$.",
+            "^[0-9]{2}/[0-9]{2}/[0-9]{4}$",
+            "^[0-9]{2}/[0-9]{2}/[0-9]{2}$"
+        ],
+        "sources": []
+    },
+    "gender": {
+        "regular_expressions": ["^(m(?:ale)?|f(?:emale)?)$"],
+        "sources": ["https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"]
+    },
+    "u.s. social security number": {
+        "regular_expressions": ["^(00[1-9]|0[1-9]\\d|66[0-57-9]|6[0-57-9]\\d|[1-57-8]\\d{2})([ -]?)(0[1-9]|[1-9]\\d)\\2(000[1-9]|00[1-9]\\d|0[1-9]\\d{2}|[1-9]\\d{3})$"],
+        "sources": ["https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"]
+    },
+    "email": {
+        "regular_expressions": [
+            "^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9.-]+(?:\\.[a-z0-9-]+)*\\.[a-z]{2,}$",
+            "[^@ \t\r\n]+@[^@ \t\r\n]+\\.[^@ \t\r\n]+"
+        ],
+        "sources": ["https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns", "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"]
+    },
+    "credit card": {
+        "regular_expressions": [
+            "^4\\d{3}[ -]?(\\d{4}[ -]?){3}$",
+            "^5[1-5]\\d{2}[ -]?(\\d{4}[ -]?){3}$",
+            "^3[4,7]\\d{2}[ -]?\\d{6}[ -]?\\d{5}$",
+            "^6(011|(5\\d{2}))[ -]?(\\d{4}[ -]?){3}$",
+            "^((35\\d{2}[ -]?(\\d{4}[ -]?){3})|((1800|2131)[ -]?(\\d{4}[ -]?){2}\\d{3}))$",
+            "^3((0[0-5]\\d{1})|([6,8]\\d{2}))[ -]?\\d{6}[ -]?\\d{5}$"
+        ],
+        "sources": [
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"
+        ]
+    },
+    "postal code": {
+        "regular_expressions": [
+            "^([\\d]{5}|[\\d]{9})$",
+            "^([\\d]{5}-[\\d]{4})$"
+        ],
+        "sources": [
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns",
+            "https://docs.trifacta.com/display/DP/Data+Type+Validation+Patterns"
+        ]
+    },
+    "latitude": {
+        "regular_expressions": ["^[\\-+]?([0-8]?\\d|[0-8]?\\d\\.\\d{1,15}|90|90\\.0{1,15})$"],
+        "sources": []
+    },
+    "longitude": {
+        "regular_expressions": [ "^[\\-+]?(0?\\d{1,2}|0?\\d{1,2}\\.\\d{1,15}|1[0-7]?\\d|1[0-7]?\\d\\.\\d{1,15}|180|180\\.0{1,15})$"],
+        "sources": []
+    },
+    "ipv4 address": {
+        "regular_expressions":  ["(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}"],
+        "sources": ["https://ihateregex.io/expr/ip/"]
+    },
+    "ipv6 address": {
+        "regular_expressions": [
+            "(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
+        ],
+        "sources": ["https://ihateregex.io/expr/ipv6/"]
+    },
+    "digital object identifier": {
+        "regular_expressions": ["^(10\\.\\d{4,5}\/[\\S]+[^;,.\\s])$"],
+        "sources": "https://ihateregex.io/expr/doi/"
+    },
+    "international air transport association airport code": {
+        "regular_expressions": ["^[A-Z]{3}$"],
+        "sources": ["https://www.wikidata.org/wiki/Property:P238"]
+    },
+    "international civil aviation organization airport code": {
+        "regular_expressions": ["^[A-Z]{4}$", "([A-Z]{2}|[CKY][A-Z0-9])([A-Z]{2}|[0-9]{2,4})"],
+        "sources": ["https://gist.github.com/yectep/4372d1166a192d5e9754", "https://www.wikidata.org/wiki/Property:P239"]
+    }
+}
